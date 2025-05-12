@@ -27,13 +27,15 @@ autoEndAuction();
 connectDB();
 app.use(
   cors({
-    origin: "http://localhost:5173", // Your frontend URL
-    credentials: true, // Allow cookies to be sent with requests
-    methods: "GET,POST,PUT,DELETE", // Allow these methods
-    allowedHeaders: "Content-Type,Authorization", // Allow headers for token authentication
+    origin: [
+      "http://localhost:5173",
+      "https://frontend-rust-alpha-67.vercel.app", // <-- your Vercel domain
+    ],
+    credentials: true,
+    methods: "GET,POST,PUT,DELETE",
+    allowedHeaders: "Content-Type,Authorization",
   })
 );
-
 // middleware to parso json
 app.use(express.json());
 app.use(cookieParser());
